@@ -1,0 +1,309 @@
+Here is the complete code for the broker website with the name changed to "Tesla.SpaceX." You can copy and paste this code into your Visual Studio Code (VSCode) editor.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesla.SpaceX Financial | Your Trusted Brokerage Partner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #3b82f6;
+            --dark: #1f2937;
+            --light: #f9fafb;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+        
+        .market-data-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .animated-underline::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        .animated-underline:hover::after {
+            width: 100%;
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Ticker animation */
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .ticker-wrap {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        
+        .ticker {
+            display: inline-block;
+            animation: ticker 60s linear infinite;
+        }
+        
+        .stats-counter {
+            transition: all 0.3s;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <span class="text-xl font-bold text-blue-600">Tesla.SpaceX</span>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#home" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium animated-underline">Home</a>
+                            <a href="#services" class="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium animated-underline">Services</a>
+                            <a href="#markets" class="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium animated-underline">Markets</a>
+                            <a href="#about" class="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium animated-underline">About</a>
+                            <a href="#contact" class="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium animated-underline">Contact</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-4 flex items-center md:ml-6">
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-300">
+                            Open Account
+                        </button>
+                        <button class="ml-4 bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-300">
+                            Login
+                        </button>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" id="mobile-menu-button">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="hidden md:hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600">Home</a>
+                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-blue-600">Services</a>
+                <a href="#markets" class="block px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-blue-600">Markets</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-blue-600">About</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-blue-600">Contact</a>
+            </div>
+            <div class="pt-4 pb-3 border-t border-gray-200">
+                <div class="mt-3 space-y-1 px-2">
+                    <button class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-white bg-blue-600 hover:bg-blue-700">Open Account</button>
+                    <button class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-800 bg-gray-200 hover:bg-gray-300 mt-2">Login</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white" id="home">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Smart Trading Solutions for Modern Investors</h1>
+                    <p class="text-lg md:text-xl mb-8 opacity-90">Access global markets with ultra-low commissions and cutting-edge trading tools designed for every level of trader.</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold transition-colors duration-300 shadow-lg">
+                            Start Trading Today
+                        </button>
+                        <button class="border-2 border-white hover:bg-white hover:bg-opacity-10 px-6 py-3 rounded-lg font-semibold transition-colors duration-300 shadow-lg">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-white bg-opacity-10"></div>
+                        <div class="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-white bg-opacity-10"></div>
+                        <div class="relative z-10 bg-white bg-opacity-5 backdrop-blur-md rounded-xl p-6 shadow-2xl border border-white border-opacity-20">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fc12dd0e-4078-4d00-90e9-a39bf6f264e1.png" alt="Modern trading dashboard showing advanced charts and analytics for stocks and cryptocurrencies" class="rounded-lg" />
+                            <div class="mt-6 grid grid-cols-2 gap-4">
+                                <div class="bg-white bg-opacity-10 p-3 rounded-lg">
+                                    <div class="text-sm text-blue-200">Portfolio Value</div>
+                                    <div class="text-xl font-semibold">$42,850</div>
+                                </div>
+                                <div class="bg-white bg-opacity-10 p-3 rounded-lg">
+                                    <div class="text-sm text-blue-200">Today's Gain</div>
+                                    <div class="text-xl font-semibold text-green-300">+$428</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Ticker -->
+    <div class="bg-gray-800 text-white py-3 px-4">
+        <div class="max-w-7xl mx-auto overflow-hidden">
+            <div class="ticker-wrap">
+                <div class="ticker flex space-x-12">
+                    <div class="flex items-center">
+                        <span class="font-bold mr-2">NASDAQ:</span>
+                        <span class="text-green-400">13,491.12 <i class="fas fa-caret-up ml-1"></i> +0.45%</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-bold mr-2">S&P 500:</span>
+                        <span class="text-red-400">4,347.35 <i class="fas fa-caret-down ml-1"></i> -0.23%</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-bold mr-2">DOW:</span>
+                        <span class="text-green-400">33,665.08 <i class="fas fa-caret-up ml-1"></i> +0.12%</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-bold mr-2">GOLD:</span>
+                        <span class="text-green-400">$1,832.45 <i class="fas fa-caret-up ml-1"></i> +0.78%</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-bold mr-2">OIL:</span>
+                        <span class="text-red-400">$74.32 <i class="fas fa-caret-down ml-1"></i> -1.34%</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-bold mr-2">BTC:</span>
+                        <span class="text-green-400">$29,845.60 <i class="fas fa-caret-up ml-1"></i> +2.45%</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-bold mr-2">ETH:</span>
+                        <span class="text-green-400">$1,843.21 <i class="fas fa-caret-up ml-1"></i> +1.87%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="stats-counter" data-target="2500000">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">
+                        <span class="count">0</span>+
+                    </div>
+                    <div class="text-gray-600">Active Clients</div>
+                </div>
+                <div class="stats-counter" data-target="85">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">
+                        <span class="count">0</span>+
+                    </div>
+                    <div class="text-gray-600">Countries Served</div>
+                </div>
+                <div class="stats-counter" data-target="24">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">
+                        <span class="count">0</span>/7
+                    </div>
+                    <div class="text-gray-600">Customer Support</div>
+                </div>
+                <div class="stats-counter" data-target="500">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">
+                        $<span class="count">0</span>B+
+                    </div>
+                    <div class="text-gray-600">Assets Traded</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-16 bg-gray-50" id="services">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Comprehensive Trading Solutions</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Tailored services designed to empower your trading journey regardless of experience level.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-chart-line text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Advanced Trading Platforms</h3>
+                    <p class="text-gray-600 mb-4">Our proprietary platform offers professional-grade charting tools, technical indicators, and lightning-fast execution speeds.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Web Platform</span>
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Mobile Apps</span>
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Desktop Terminal</span>
+                    </div>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-hand-holding-usd text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Competitive Pricing</h3>
+                    <p class="text-gray-600 mb-4">Enjoy some of the lowest commissions in the industry with transparent pricing and no hidden fees.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">0% Commissions</span>
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Tight Spreads</span>
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">No Inactivity Fees</span>
+                    </div>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-shield-alt text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Secure Investments</h3>
+                    <p class="text-gray-600 mb-4">Your assets are protected with industry-leading encryption and segregated accounts at top-tier banks.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">SIPC Insurance</span>
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Bank-Level Security</span>
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">2FA Protection</span>
+                    </div>
+                </div>
+                
+                <!-- Service Card 4 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-graduation-cap text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Comprehensive Education</h3>
+                    <p class="text-gray-600 mb-4">Access our library of webinars, tutorials, and market analysis to sharpen your trading skills.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Daily Webinars</span>
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Trading Courses</span>
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Market Research</span>
+                    </div>
+                </div>
+                
+                <!-- Service Card 5 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="text
